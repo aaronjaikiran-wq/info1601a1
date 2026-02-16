@@ -1,458 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFO 1601 Assignment 1</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@800&display=swap" rel="stylesheet">
-    <style>
-        /* TEST 31: box-sizing */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valorant Arsenal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Roboto, sans-serif;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-        }
+    body {
+      margin: 0;
+      background: #f0f0f0;
+    }
 
-        /* TEST 7: container */
-        #main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 20px;
-            padding-right: 20px;
-            background: white;
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      background: #333333;
+      padding: 15px 30px;
+    }
 
-        /* TEST 6: navbar */
-        nav {
-            background-color: #333333;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 15px;
+    }
 
-        /* TEST 7: nav-link */
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 10px 15px;
-        }
+    .hero {
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #eaeaea;
+      text-align: center;
+    }
 
-        /* TEST 12: hero-section */
-        .hero {
-            min-height: 400px;
-            background-color: #e9ecef;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin: 20px 0;
-            padding: 20px;
-        }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
 
-        /* TEST 8: flex-container */
-        .flex-container {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 20px !important;
-            margin: 20px 0;
-        }
+    .flex-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
 
-        /* TEST 9: flex-item */
-        .flex-item {
-            flex: 1 1 300px !important;
-            min-width: 300px !important;
-        }
+    .flex-item {
+      flex: 1;
+      min-width: 300px;
+    }
 
-        /* TEST 1: card */
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-        }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
 
-        /* TEST 2: card-header */
-        .card-header {
-            font-family: 'Roboto', sans-serif;
-            color: black;
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
+    .card img {
+      max-width: 100%;
+      display: block;
+      border-radius: 15px;
+    }
 
-        /* TEST 3: card-body */
-        .card-body {
-            color: #333333;
-            font-size: 14px;
-            line-height: 1.6;
-        }
+    .card-header {
+      font-size: 18px;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 10px;
+    }
 
-        /* TEST 4: btn-primary */
-        .btn-primary {
-            background-color: #007bff !important;
-            color: #ffffff !important;
-            padding: 12px 24px !important;
-            border-radius: 8px !important;
-            border: none !important;
-            cursor: pointer !important;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
+    .card-body {
+      font-size: 14px;
+      color: #444444;
+      line-height: 1.6;
+    }
 
-        .btn-primary:hover {
-            background-color: #0056b3 !important;
-        }
+    button {
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        /* TEST 5: btn-secondary */
-        .btn-secondary {
-            background-color: #6c757d !important;
-            color: #ffffff !important;
-            padding: 12px 24px !important;
-            border-radius: 8px !important;
-            border: none !important;
-            cursor: pointer !important;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
+    .btn-primary {
+      background: #007bff;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+    }
 
-        .btn-secondary:hover {
-            background-color: #545b62 !important;
-        }
+    .btn-secondary {
+      background: #6c757d;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+    }
 
-        /* TEST 6: button-hover */
-        button {
-            transition: all 0.3s ease !important;
-        }
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+    }
 
-        /* TEST 16: badge */
-        .badge {
-            display: inline-block !important;
-            padding: 5px 10px !important;
-            border-radius: 12px !important;
-            font-size: 12px !important;
-            font-weight: bold !important;
-            margin-right: 5px;
-        }
+    .badge-success {
+      background: green;
+      color: white;
+    }
 
-        /* TEST 17: badge-success */
-        .badge-success {
-            background-color: #28a745 !important;
-            color: white !important;
-        }
+    .badge-danger {
+      background: red;
+      color: white;
+    }
 
-        /* TEST 18: badge-danger */
-        .badge-danger {
-            background-color: #dc3545 !important;
-            color: white !important;
-        }
+    figure {
+      width: 30vw;
+      margin: 40px auto;
+      border: 1px solid #ccc;
+    }
 
-        /* TEST 14 & 15: form elements */
-        form {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
+    figure img {
+      max-width: 100%;
+      display: block;
+    }
 
-        label {
-            display: block !important;
-            margin-bottom: 8px !important;
-            font-weight: 600 !important;
-            color: #333333 !important;
-        }
+    figcaption {
+      text-align: center;
+      font-size: 14px;
+      color: #555555;
+      padding: 10px;
+    }
 
-        input {
-            width: 100% !important;
-            padding: 10px !important;
-            border: 2px solid #cccccc !important;
-            border-radius: 5px !important;
-            font-size: 14px !important;
-            margin-bottom: 20px;
-        }
+    details {
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #ffffff;
+    }
 
-        /* TEST 19-21: figure */
-        figure {
-            width: 30vw !important;
-            margin: 20px auto !important;
-            border: 2px solid #ddd !important;
-            padding: 10px;
-            border-radius: 8px;
-            display: block;
-        }
+    summary {
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 12px;
+    }
 
-        figure img {
-            max-width: 100% !important;
-            display: block !important;
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 30px 0;
+    }
 
-        figcaption {
-            text-align: center !important;
-            color: #555555 !important;
-            font-size: 14px !important;
-            margin-top: 10px;
-        }
+    th {
+      background: #333333;
+      color: #ffffff;
+      padding: 12px;
+      text-align: left;
+    }
 
-        /* TEST 23-24: accordion */
-        details {
-            border-radius: 8px !important;
-            padding: 16px !important;
-            margin-bottom: 12px !important;
-            background: white;
-            border: 1px solid #ddd;
-        }
+    td {
+      padding: 12px;
+      text-align: left;
+    }
 
-        summary {
-            font-weight: bold !important;
-            cursor: pointer !important;
-            padding: 12px !important;
-            font-size: 16px !important;
-        }
+    tbody tr:nth-child(even) {
+      background: #f5f5f5;
+    }
 
-        /* TEST 25-30: table */
-        table {
-            width: 100%;
-            border-collapse: collapse !important;
-            margin: 40px 0;
-            border-radius: 8px !important;
-            overflow: hidden !important;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
-        }
+    form {
+      max-width: 600px;
+      background: #f5f5f5;
+      padding: 20px;
+      margin: 40px auto;
+    }
 
-        th {
-            background-color: #333333 !important;
-            color: white !important;
-            padding: 12px !important;
-            text-align: left !important;
-        }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333333;
+    }
 
-        td {
-            padding: 12px !important;
-            text-align: left !important;
-        }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #cccccc;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
 
-        tbody tr:nth-child(even) {
-            background-color: #f2f2f2 !important;
-        }
+    footer {
+      background: #222222;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
 
-        /* TEST 13: footer */
-        footer {
-            background-color: #222222 !important;
-            color: #ffffff !important;
-            padding: 30px 0 !important;
-            text-align: center !important;
-            margin-top: 40px;
-        }
-
-        /* TEST 32: dialog */
-        button[popovertarget] {
-            cursor: pointer !important;
-        }
-
-        dialog {
-            background-color: white !important;
-            border-radius: 8px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
-            border: none;
-            margin: auto;
-        }
-    </style>
+    dialog[popover] {
+      padding: 24px;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
-    <!-- TEST 6: Navigation Bar -->
-    <nav>
-        <div style="color: white; font-weight: bold;">VALORANT</div>
-        <div>
-            <a href="#">HOME</a>
-            <a href="#">RIFLES</a>
-            <a href="#">SMGS</a>
-            <a href="#">SHOTGUNS</a>
-            <a href="#">PISTOLS</a>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#weapons">Weapons</a>
+    <a href="#skins">Skins</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Valorant Arsenal</h1>
+    <p>Discover every gun and its most popular skin</p>
+    <button class="btn-primary">View Weapons</button>
+  </section>
+
+  <main class="container" id="weapons">
+    <div class="flex-container">
+      <div class="flex-item">
+        <div class="card">
+          <img src="https://static.wikia.nocookie.net/valorant/images/1/1a/Vandal.png" alt="Vandal">
+          <div class="card-header">Vandal</div>
+          <div class="card-body">
+            One-shot headshots at any range.<br><br>
+            <span class="badge badge-success">Meta</span>
+            <span class="badge badge-danger">High Recoil</span>
+          </div>
         </div>
-    </nav>
+      </div>
 
-    <!-- TEST 7: Container -->
-    <div id="main-container">
-
-        <!-- TEST 12: Hero Section -->
-        <section class="hero">
-            <h1>VALORANT WEAPONS</h1>
-            <p>Complete weapon database</p>
-            <div>
-                <button class="btn-primary">VIEW ALL</button>
-                <button class="btn-secondary">COMPARE</button>
-            </div>
-        </section>
-
-        <!-- TEST 8 & 9: Flex Container and Items -->
-        <div class="flex-container">
-            <!-- Item 1 -->
-            <div class="flex-item">
-                <div class="card">
-                    <div class="card-header">VANDAL</div>
-                    <div class="card-body">
-                        <!-- TEST 19-21: Figure -->
-                        <figure>
-                            <img src="https://via.placeholder.com/300x150" alt="Vandal">
-                            <figcaption>Vandal Rifle</figcaption>
-                        </figure>
-                        <p>One-tap headshots at any range.</p>
-                        <!-- TEST 16-18: Badges -->
-                        <div>
-                            <span class="badge badge-success">META</span>
-                            <span class="badge">RIFLE</span>
-                            <span class="badge badge-danger">NERFED</span>
-                        </div>
-                        <!-- TEST 4-6: Buttons -->
-                        <div style="margin-top: 15px;">
-                            <button class="btn-primary">DETAILS</button>
-                            <button class="btn-secondary">COMPARE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="flex-item">
-                <div class="card">
-                    <div class="card-header">PHANTOM</div>
-                    <div class="card-body">
-                        <figure>
-                            <img src="https://via.placeholder.com/300x150" alt="Phantom">
-                            <figcaption>Phantom Rifle</figcaption>
-                        </figure>
-                        <p>Silenced and accurate.</p>
-                        <div>
-                            <span class="badge badge-success">META</span>
-                            <span class="badge">RIFLE</span>
-                        </div>
-                        <div style="margin-top: 15px;">
-                            <button class="btn-primary">DETAILS</button>
-                            <button class="btn-secondary">COMPARE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="flex-item">
-                <div class="card">
-                    <div class="card-header">SPECTRE</div>
-                    <div class="card-body">
-                        <figure>
-                            <img src="https://via.placeholder.com/300x150" alt="Spectre">
-                            <figcaption>Spectre SMG</figcaption>
-                        </figure>
-                        <p>Eco round specialist.</p>
-                        <div>
-                            <span class="badge">SMG</span>
-                            <span class="badge badge-danger">NERFED</span>
-                        </div>
-                        <div style="margin-top: 15px;">
-                            <button class="btn-primary">DETAILS</button>
-                            <button class="btn-secondary">COMPARE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="flex-item">
+        <div class="card">
+          <img src="https://static.wikia.nocookie.net/valorant/images/4/44/Phantom.png" alt="Phantom">
+          <div class="card-header">Phantom</div>
+          <div class="card-body">
+            Silenced rifle with faster fire rate.<br><br>
+            <span class="badge badge-success">Accurate</span>
+          </div>
         </div>
-
-        <!-- TEST 23-24: Accordion -->
-        <details>
-            <summary>RIFLES CATEGORY</summary>
-            <p>Vandal, Phantom, Bulldog, Guardian</p>
-        </details>
-        
-        <details>
-            <summary>SMGS CATEGORY</summary>
-            <p>Spectre, Stinger</p>
-        </details>
-        
-        <details>
-            <summary>SHOTGUNS CATEGORY</summary>
-            <p>Judge, Bucky</p>
-        </details>
-
-        <!-- TEST 25-30: Table -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Weapon</th>
-                    <th>Damage</th>
-                    <th>Fire Rate</th>
-                    <th>Cost</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Vandal</td>
-                    <td>160</td>
-                    <td>9.75</td>
-                    <td>2900</td>
-                </tr>
-                <tr>
-                    <td>Phantom</td>
-                    <td>156</td>
-                    <td>11</td>
-                    <td>2900</td>
-                </tr>
-                <tr>
-                    <td>Spectre</td>
-                    <td>78</td>
-                    <td>13.33</td>
-                    <td>1600</td>
-                </tr>
-                <tr>
-                    <td>Stinger</td>
-                    <td>67</td>
-                    <td>16</td>
-                    <td>1100</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- TEST 14-15: Form -->
-        <form>
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="Enter name">
-            
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter email">
-            
-            <label for="weapon">Favorite Weapon</label>
-            <input type="text" id="weapon" placeholder="Vandal/Phantom/etc">
-            
-            <button type="submit" class="btn-primary">SUBSCRIBE</button>
-        </form>
-
-        <!-- TEST 32: Dialog/Popover -->
-        <div style="text-align: center; margin: 40px 0;">
-            <button popovertarget="info-dialog" class="btn-primary">OPEN INFO</button>
-            
-            <dialog id="info-dialog" popover>
-                <h3>WEAPON INFO</h3>
-                <p>Complete weapon stats available</p>
-                <button popovertarget="info-dialog" popovertargetaction="hide" class="btn-secondary">CLOSE</button>
-            </dialog>
-        </div>
+      </div>
     </div>
 
-    <!-- TEST 13: Footer -->
-    <footer>
-        <p>© 2026 Valorant Arsenal</p>
-        <p>INFO 1601 Assignment 1</p>
-    </footer>
+    <figure id="skins">
+      <img src="https://static.wikia.nocookie.net/valorant/images/9/9e/Reaver_Vandal.png" alt="Reaver Vandal">
+      <figcaption>Reaver Vandal – Most Iconic Valorant Skin</figcaption>
+    </figure>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Weapon</th>
+          <th>Type</th>
+          <th>Cost</th>
+          <th>Popular Skin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vandal</td>
+          <td>Rifle</td>
+          <td>2900</td>
+          <td>Reaver</td>
+        </tr>
+        <tr>
+          <td>Phantom</td>
+          <td>Rifle</td>
+          <td>2900</td>
+          <td>Oni</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+      <summary>Which weapon should I choose?</summary>
+      <p>Use the Vandal for long-range fights and the Phantom for close encounters.</p>
+    </details>
+
+    <form id="contact">
+      <label>Full Name</label>
+      <input type="text" placeholder="Enter your name">
+
+      <label>Favorite Weapon</label>
+      <input type="text" placeholder="Vandal, Phantom...">
+
+      <button class="btn-primary" type="submit">Submit</button>
+    </form>
+
+    <button class="btn-secondary" popovertarget="infoDialog">Skin Trivia</button>
+    <dialog id="infoDialog" popover>
+      Reaver skins were among the first premium collections in Valorant.
+    </dialog>
+  </main>
+
+  <footer>
+    © 2026 Valorant Arsenal | INFO 1601 Assignment 1
+  </footer>
+
 </body>
 </html>
